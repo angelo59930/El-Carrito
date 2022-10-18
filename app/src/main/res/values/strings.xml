@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">elCarrito</string>
+    <string name="business_name">El Carrito</string>
+    <string name="logo_empresarial">logo_empresarial</string>
+    <string name="usuario">UserName</string>
+    <string name="contrasena">Password</string>
+    <string name="login">iniciar sesion</string>
+    <string name="forget_password">Olvide mi contraseña</string>
+    <string name="log_up">Registrarme</string>
 </resources>
