@@ -13,4 +13,9 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.splash_screen" parent="Theme.ElCarrito">
+        <item name="android:windowBackground">@drawable/slpash_screen</item>
+    </style>
+
 </resources>
