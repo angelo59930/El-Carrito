@@ -2,9 +2,13 @@
     <string name="app_name">elCarrito</string>
     <string name="business_name">El Carrito</string>
     <string name="logo_empresarial">logo_empresarial</string>
-    <string name="usuario">UserName</string>
+    <string name="usuario">Usuario</string>
     <string name="contrasena">Password</string>
     <string name="login">iniciar sesion</string>
     <string name="forget_password">Olvide mi contraseña</string>
     <string name="log_up">Registrarme</string>
+    <string name="recuperation_text">Ingrese su mail</string>
+    <string name="recuperation_text_button">Enviar mail de recuperación</string>
+    <string name="back">volver</string>
+    <string name="recuperation_text_validation">Se envio el correo de recuperacion</string>
 </resources>
