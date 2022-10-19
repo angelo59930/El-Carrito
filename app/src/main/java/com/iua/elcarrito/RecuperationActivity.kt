@@ -7,9 +7,9 @@ import android.widget.Toast
 import com.iua.elcarrito.databinding.ActivityLogBinding
 import com.iua.elcarrito.databinding.ActivityRecuperationBinding
 
-private lateinit var binding: ActivityRecuperationBinding
-
 class RecuperationActivity : AppCompatActivity() {
+  private lateinit var binding: ActivityRecuperationBinding
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     binding = ActivityRecuperationBinding.inflate(layoutInflater)
