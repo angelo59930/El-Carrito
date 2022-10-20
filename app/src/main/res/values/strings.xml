@@ -11,4 +11,7 @@
     <string name="recuperation_text_button">Enviar mail de recuperación</string>
     <string name="back">volver</string>
     <string name="recuperation_text_validation">Se envio el correo de recuperacion</string>
+    <string name="emailUser">Correo electronico</string>
+    <string name="confirm_contraseña">Confirmar contraseña</string>
+    <string name="registrase">Registrase</string>
 </resources>
