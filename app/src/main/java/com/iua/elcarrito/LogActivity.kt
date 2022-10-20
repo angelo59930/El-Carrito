@@ -26,5 +26,6 @@ class LogActivity : AppCompatActivity() {
       startActivity(intent)
     }
 
+
   }
 }
