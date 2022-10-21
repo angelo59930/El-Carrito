@@ -17,5 +17,11 @@
     <style name="Theme.splash_screen" parent="Theme.ElCarrito">
         <item name="android:windowBackground">@drawable/slpash_screen</item>
     </style>
+    <style name="Theme.ElCarrito.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.ElCarrito.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.ElCarrito.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

@@ -17,15 +17,18 @@ class LogActivity : AppCompatActivity() {
     setContentView(view)
 
     binding.recuperation.setOnClickListener{
-      val intent:Intent = Intent(this, RecuperationActivity::class.java)
+      val intent = Intent(this, RecuperationActivity::class.java)
       startActivity(intent)
     }
 
     binding.register.setOnClickListener {
-      val intent:Intent = Intent(this, RegisterActivity::class.java)
+      val intent = Intent(this, RegisterActivity::class.java)
       startActivity(intent)
     }
 
-
+    binding.login.setOnClickListener {
+      val intent = Intent(this, FirstViewActivity::class.java)
+      startActivity(intent)
+    }
   }
 }
