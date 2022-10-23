@@ -14,14 +14,14 @@ class FirstViewActivity : AppCompatActivity(), ProductsAdapter.ProductListOnClic
     binding = ActivityFirstViewBinding.inflate(layoutInflater)
     val view = binding.root
     setContentView(view)
-
+/*
     binding.poductList.adapter = ProductsAdapter(
       listOf(
         Product("Coca","gaseosa",180),
         Product("pepsi","gaseosa",150),
          Product("Manaos","gaseosa",100),
         Product("Oreo","galletas",1200)
-      ),this)
+      ),this)*/
   }
 
   override fun onItemClick(position: Int) {

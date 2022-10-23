@@ -29,4 +29,8 @@
     <string name="productitemimage">productItemImage</string>
     <string name="productos_destacados">PRODUCTOS DESTACADOS</string>
     <string name="productos">Productos</string>
+    <string name="home">Home</string>
+    <string name="setting">Setting</string>
+    <string name="shop">Shop</string>
+    <string name="saved">Saved</string>
 </resources>
