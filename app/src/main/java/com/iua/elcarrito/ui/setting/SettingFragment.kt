@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.iua.elcarrito.databinding.FragmentSettingBinding
 
 class SettingFragment : Fragment() {
@@ -22,16 +20,10 @@ class SettingFragment : Fragment() {
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    val slideshowViewModel =
-      ViewModelProvider(this).get(SettingViewModel::class.java)
 
     _binding = FragmentSettingBinding.inflate(inflater, container, false)
     val root: View = binding.root
 
-    val textView: TextView = binding.textSlideshow
-    slideshowViewModel.text.observe(viewLifecycleOwner) {
-      textView.text = "setting"
-    }
     return root
   }
 
