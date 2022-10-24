@@ -1,10 +1,10 @@
-package com.iua.elcarrito
+package com.iua.elcarrito.views
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.iua.elcarrito.databinding.ActivityLogBinding
+import com.iua.elcarrito.R
 import com.iua.elcarrito.databinding.ActivityRecuperationBinding
 
 class RecuperationActivity : AppCompatActivity() {

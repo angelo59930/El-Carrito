@@ -13,35 +13,21 @@
         android:theme="@style/Theme.ElCarrito"
         tools:targetApi="31">
         <activity
-            android:name=".DetailProductActivity"
+            android:name=".views.RegisterActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".FirstViewActivity"
+            android:name=".views.RecuperationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".RegisterActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".RecuperationActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".LogActivity"
+            android:name=".views.LogActivity"
             android:exported="true"
             android:theme="@style/Theme.splash_screen">
             <intent-filter>

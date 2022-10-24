@@ -1,9 +1,9 @@
-package com.iua.elcarrito
+package com.iua.elcarrito.recyclerViews
 
 import android.view.LayoutInflater
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.iua.elcarrito.dataClass.Product
 import com.iua.elcarrito.databinding.ViewProductItemBinding
 
 class ProductsAdapter(private val products:List<Product>, private val listener: ProductListOnClickListener) : RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
