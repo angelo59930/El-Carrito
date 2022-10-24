@@ -1,4 +1,4 @@
-package com.iua.elcarrito.recyclerViews
+package com.iua.elcarrito.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

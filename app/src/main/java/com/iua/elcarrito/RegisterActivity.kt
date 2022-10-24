@@ -1,4 +1,4 @@
-package com.iua.elcarrito.views
+package com.iua.elcarrito
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

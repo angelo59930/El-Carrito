@@ -14,7 +14,29 @@
     <string name="emailUser">Correo electronico</string>
     <string name="confirm_contraseña">Confirmar contraseña</string>
     <string name="registrase">Registrase</string>
+    <string name="productItemDescription">ProductTitle</string>
+    <string name="productitemimage">productItemImage</string>
+    <string name="productos_destacados">PRODUCTOS DESTACADOS</string>
+    <string name="productos">Productos</string>
+    <string name="home">Home</string>
+    <string name="setting">Setting</string>
+    <string name="shop">Shop</string>
+    <string name="saved">Saved</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_main_menu">MainMenuActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -25,17 +47,5 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="productItemDescription">ProductTitle</string>
-    <string name="productitemimage">productItemImage</string>
-    <string name="productos_destacados">PRODUCTOS DESTACADOS</string>
-    <string name="productos">Productos</string>
-    <string name="home">Home</string>
-    <string name="setting">Setting</string>
-    <string name="shop">Shop</string>
-    <string name="saved">Saved</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+
 </resources>
