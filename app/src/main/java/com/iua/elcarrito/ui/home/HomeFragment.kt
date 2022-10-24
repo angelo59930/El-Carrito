@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.iua.elcarrito.R
 import com.iua.elcarrito.adapters.ProductsAdapter
 import com.iua.elcarrito.dataClass.Product
 import com.iua.elcarrito.databinding.FragmentHomeBinding
@@ -44,6 +46,6 @@ class HomeFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
   }
 
   override fun onItemClick(position: Int) {
-    Log.d("TEST", "boton precion$position")
+    findNavController().navigate(R.id.action_nav_home_to_detailProductFragment)
   }
 }
