@@ -13,8 +13,7 @@ import com.iua.elcarrito.databinding.FragmentShopBinding
 
 class ShopFragment : Fragment() {
 
-  private var _binding: FragmentShopBinding? = null
-  private val binding get() = _binding!!
+  private lateinit var binding: FragmentShopBinding
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -25,8 +24,13 @@ class ShopFragment : Fragment() {
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View? {
-    _binding = FragmentShopBinding.inflate(inflater, container, false)
+    binding = FragmentShopBinding.inflate(inflater, container, false)
 
+    return binding.root
+  }
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
     binding.compra.setOnClickListener {
       Log.d("BOTON","PRESIONE EL BOTON COMPRAR")
       findNavController().navigate(R.id.action_nav_shop_to_orderFragment)
@@ -35,8 +39,6 @@ class ShopFragment : Fragment() {
     binding.volver.setOnClickListener {
       findNavController().navigate(R.id.action_nav_shop_to_nav_home)
     }
-
-    return inflater.inflate(R.layout.fragment_shop, container, false)
   }
 
 }
