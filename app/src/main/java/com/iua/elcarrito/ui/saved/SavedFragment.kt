@@ -41,4 +41,12 @@ class SavedFragment : Fragment(), ProductsAdapter.ProductListOnClickListener  {
   override fun onItemClick(position: Int) {
     findNavController().navigate(R.id.action_nav_saved_to_detailProductFragment)
   }
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+
+    binding.button5.setOnClickListener {
+      findNavController().navigate(R.id.action_nav_saved_to_nav_home)
+    }
+  }
 }

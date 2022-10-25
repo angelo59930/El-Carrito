@@ -38,4 +38,11 @@ class HistoryFragment : Fragment(), ProductsAdapter.ProductListOnClickListener  
     findNavController().navigate(R.id.action_nav_history_to_detailProductFragment)
   }
 
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    binding.button5.setOnClickListener {
+      findNavController().navigate(R.id.action_nav_history_to_nav_home)
+    }
+  }
+
 }

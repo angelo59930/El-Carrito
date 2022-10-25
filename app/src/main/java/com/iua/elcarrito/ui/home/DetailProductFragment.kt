@@ -33,6 +33,10 @@ class DetailProductFragment : Fragment() {
       Toast.makeText(context,"AGREGADO AL CARRITO",Toast.LENGTH_LONG).show()
     }
 
+    binding.guardar.setOnClickListener {
+      Toast.makeText(context,"AGREGADO A LOS DESTACADOS",Toast.LENGTH_LONG).show()
+    }
+
   }
 
 }
