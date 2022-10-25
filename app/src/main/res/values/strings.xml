@@ -60,5 +60,13 @@
     <string name="total">Total:</string>
     <string name="cancelar">Cancelar</string>
     <string name="confirmar">Confirmar</string>
+    <string name="cambiar_datos">Cambiar Datos</string>
+    <string name="cambiar_foto_de_perfil">Cambiar foto de perfil</string>
+    <string name="ubicacion">Ubicacion</string>
+    <string name="direccion">direccion</string>
+    <string name="ejemplo_mail">ejemplo@gmail.com</string>
+    <string name="nombre_del_producto">Nombre del producto</string>
+    <string name="descriocion_del_producto">Descriocion del producto</string>
+    <string name="agregar">agregar</string>
 
 </resources>
