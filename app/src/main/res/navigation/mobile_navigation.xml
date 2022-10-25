@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_nav_shop_to_orderFragment"
             app:destination="@id/orderFragment" />
+        <action
+            android:id="@+id/action_nav_shop_to_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
     <fragment
         android:id="@+id/nav_history"

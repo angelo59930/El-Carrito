@@ -53,5 +53,12 @@
     <string name="configuraci_n">Configuración</string>
     <string name="historial">Historial</string>
     <string name="perfil">Perfil</string>
+    <string name="volver">volver</string>
+    <string name="comprar">Comprar</string>
+    <string name="aca_va_las_settings">ACA VA LAS SETTINGS</string>
+    <string name="ticket">Ticket</string>
+    <string name="total">Total:</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="confirmar">Confirmar</string>
 
 </resources>
