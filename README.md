@@ -16,5 +16,5 @@ Entre las funciones mas importantes se encuentran:
 
 Integrantes
 ---------------
-Manfredi Angelo
+Manfredi Angelo -
 Venturino Fatima
