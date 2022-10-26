@@ -14,3 +14,7 @@ Entre las funciones mas importantes se encuentran:
 6. Detalle del producto
 7. Detalle de la compra
 
+Integrantes
+---------------
+Manfredi Angelo
+Venturino Fatima
