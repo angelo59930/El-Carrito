@@ -1,4 +1,5 @@
-El Carrito
+
+![](https://github.com/angelo59930/El-Carrito/blob/main/app/src/main/res/drawable/logo_el_carrito_100x100_.png)     El Carrito 
 ===============
 
 
@@ -8,6 +9,12 @@ Entre las funciones mas importantes se encuentran:
 1. Perfil de usuario
 2. Historial
 3. Mi carrito
-4. Registro de usuario
-5. Detalle del producto
-6. Detalle de la compra
+4. Productos destacados
+5. Registro de usuario
+6. Detalle del producto
+7. Detalle de la compra
+
+Integrantes
+---------------
+Manfredi Angelo -
+Venturino Fatima
