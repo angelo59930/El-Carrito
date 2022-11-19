@@ -1,4 +1,4 @@
-package com.iua.elcarrito.dataClass
+package com.iua.elcarrito.data
 
 data class Product(val title: String, val description: String, val price:Number) {
 

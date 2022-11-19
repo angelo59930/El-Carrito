@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.iua.elcarrito.R
 import com.iua.elcarrito.adapters.ProductsAdapter
-import com.iua.elcarrito.dataClass.Product
+import com.iua.elcarrito.data.Product
 import com.iua.elcarrito.databinding.FragmentHistoryBinding
 
 class HistoryFragment : Fragment(), ProductsAdapter.ProductListOnClickListener  {

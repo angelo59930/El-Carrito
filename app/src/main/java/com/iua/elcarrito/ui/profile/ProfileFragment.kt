@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.iua.elcarrito.R
 import com.iua.elcarrito.databinding.FragmentProfileBinding
+import com.iua.elcarrito.sharedPreferences.UserApplication.Companion.preferences
 
 class ProfileFragment : Fragment() {
 
@@ -30,8 +31,9 @@ class ProfileFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
+    binding.textView2.text = preferences.getUsername()
+
     binding.editProfile.setOnClickListener {
-      Log.d("BOTON","EDITAR PERFIL")
       findNavController().navigate(R.id.action_nav_profile_to_editProfileFragment)
     }
   }
