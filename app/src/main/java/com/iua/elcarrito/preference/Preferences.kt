@@ -1,4 +1,4 @@
-package com.iua.elcarrito.sharedPreferences
+package com.iua.elcarrito.preference
 
 import android.content.Context
 

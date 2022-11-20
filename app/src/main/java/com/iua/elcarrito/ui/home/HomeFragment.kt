@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.iua.elcarrito.R
-import com.iua.elcarrito.adapters.ProductsAdapter
-import com.iua.elcarrito.data.Product
+import com.iua.elcarrito.adapter.ProductsAdapter
+import com.iua.elcarrito.data.model.Product
 import com.iua.elcarrito.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {

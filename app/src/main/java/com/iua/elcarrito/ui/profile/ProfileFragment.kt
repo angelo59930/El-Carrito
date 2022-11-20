@@ -1,7 +1,6 @@
 package com.iua.elcarrito.ui.profile
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.iua.elcarrito.R
 import com.iua.elcarrito.databinding.FragmentProfileBinding
-import com.iua.elcarrito.sharedPreferences.UserApplication.Companion.preferences
+import com.iua.elcarrito.MyApplication.Companion.preferences
 
 class ProfileFragment : Fragment() {
 

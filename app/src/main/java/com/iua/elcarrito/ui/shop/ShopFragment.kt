@@ -6,21 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.iua.elcarrito.MainActivity
 import com.iua.elcarrito.R
-import com.iua.elcarrito.data.Product
+import com.iua.elcarrito.data.databases.entity.ProductEntity
 import com.iua.elcarrito.databinding.FragmentShopBinding
-import com.iua.elcarrito.sharedPreferences.UserApplication
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import com.iua.elcarrito.viewModel.ProductViewModel
 
 class ShopFragment : Fragment() {
 
   private lateinit var binding: FragmentShopBinding
-
+  private lateinit var productViewModel: ProductViewModel
+  //private lateinit var productList : List<ProductEntity>
+  var lista = emptyList<ProductEntity>()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -39,8 +37,15 @@ class ShopFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    binding.compra.setOnClickListener {
 
+    //TODO:mostrar la lista de productos en la activity
+    productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
+    productViewModel.getAllProducts.observe(viewLifecycleOwner) { products ->
+      lista = products
+      Log.d("DATA-BASE", "ACA ESTA EL MENSAJE : $products")
+    }
+
+    binding.compra.setOnClickListener {
       Log.d("BOTON","PRESIONE EL BOTON COMPRAR")
       findNavController().navigate(R.id.action_nav_shop_to_orderFragment)
     }
@@ -49,4 +54,5 @@ class ShopFragment : Fragment() {
       findNavController().navigate(R.id.action_nav_shop_to_nav_home)
     }
   }
+
 }

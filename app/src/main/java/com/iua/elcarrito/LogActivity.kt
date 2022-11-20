@@ -3,8 +3,8 @@ package com.iua.elcarrito
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.iua.elcarrito.MyApplication.Companion.preferences
 import com.iua.elcarrito.databinding.ActivityLogBinding
-import com.iua.elcarrito.sharedPreferences.UserApplication.Companion.preferences
 
 class LogActivity : AppCompatActivity() {
 
@@ -30,7 +30,6 @@ class LogActivity : AppCompatActivity() {
     binding.login.setOnClickListener {
       if (binding.editTextTextPersonName.text.toString().isNotEmpty()){
         preferences.saveUsername(binding.editTextTextPersonName.text.toString())
-        
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
       }

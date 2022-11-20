@@ -1,13 +1,13 @@
-package com.iua.elcarrito.sharedPreferences
+package com.iua.elcarrito
 
+import android.annotation.SuppressLint
 import android.app.Application
-import android.content.Context
-import androidx.room.Room
-import com.iua.elcarrito.data.databases.ProductDataBase
+import com.iua.elcarrito.preference.Preferences
 
-class UserApplication : Application() {
+class MyApplication : Application() {
 
   companion object{
+    @SuppressLint("StaticFieldLeak")
     lateinit var preferences: Preferences
   }
 

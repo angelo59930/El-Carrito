@@ -1,7 +1,7 @@
 package com.iua.elcarrito
 
-import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -10,8 +10,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
-import com.iua.elcarrito.data.databases.ProductDataBase
+import com.iua.elcarrito.data.model.ProductClient
 import com.iua.elcarrito.databinding.ActivityMainBinding
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +25,17 @@ class MainActivity : AppCompatActivity() {
     setContentView(binding.root)
 
     setSupportActionBar(binding.appBarMain.toolbar)
+
+
+    /*TODO:Llevar al fragment que corresponda hacer la peticion, esto es una pruena */
+    thread {
+      val listProducts = ProductClient.service.listProduct()
+      val body = listProducts.execute().body()
+      Log.d("NETWORKING", "body == null? : ${body == null}")
+      if(body != null)
+        Log.d("NETWORKING", "body:\n $body")
+    }
+    /*------------------------------------------------------------------------------*/
 
     val drawerLayout: DrawerLayout = binding.drawerLayout
     val navView: NavigationView = binding.navView
