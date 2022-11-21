@@ -39,15 +39,15 @@ class HistoryFragment : Fragment(), ProductsAdapter.ProductListOnClickListener  
 
     history = listOf()
 
+
     productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
 
     productViewModel.getAllProducts.observe(viewLifecycleOwner) { products ->
       lista = products
+
       Log.d("HISTORY", "HISTORIAL : $products")
-    }
-    //FIXME:CORREGIR PORQUE NO SE PASA EL HISTORIAL
-    lista.forEach { item ->
-      run {
+
+      lista.forEach { item ->
         val productTmp = Product(title = item.title, description = item.description, price = item.price)
         val tmp = history + productTmp
         Log.d("HISTORY","item actual: $productTmp")
@@ -55,9 +55,14 @@ class HistoryFragment : Fragment(), ProductsAdapter.ProductListOnClickListener  
         Log.d("HISTORY","lista actual: $tmp")
         history = tmp
       }
+
+      binding.poductList.adapter = ProductsAdapter(history,this)
     }
 
-    binding.poductList.adapter = ProductsAdapter(history,this)
+    //FIXME:CORREGIR PORQUE NO SE PASA EL HISTORIAL
+
+
+
 
     return binding.root
   }
