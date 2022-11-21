@@ -6,13 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.iua.elcarrito.MyApplication.Companion.preferences
-import com.iua.elcarrito.data.model.Product
+import com.iua.elcarrito.data.databases.entity.ProductEntity
 import com.iua.elcarrito.databinding.FragmentDetailProductBinding
+import com.iua.elcarrito.viewModel.ProductViewModel
 
 class DetailProductFragment : Fragment() {
 
   private lateinit var binding: FragmentDetailProductBinding
+  private lateinit var productViewModel: ProductViewModel
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -30,17 +33,20 @@ class DetailProductFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    val name = preferences.getProductName()
-    val desc = preferences.getProductDesc()
-    val price = preferences.getProductPrice()
+    val sName = preferences.getProductName()
+    val sDesc = preferences.getProductDesc()
+    val sPrice = preferences.getProductPrice()
 
-    binding.textView17.text = name
+    binding.textView17.text = sName
 
-    binding.textView18.text = "$desc\nPrecio :$price"
+    binding.textView18.text = "$sDesc\nPrecio :$sPrice"
 
     binding.agregar.setOnClickListener {
 
-      //TODO:agregar producto a la base de datos
+      productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
+      if (sPrice != null) {
+        productViewModel.addProduct(ProductEntity(title = sName.toString(), description = sDesc.toString(), price = sPrice.toDouble()))
+      }
 
       Toast.makeText(context,"AGREGADO AL CARRITO",Toast.LENGTH_LONG).show()
     }
