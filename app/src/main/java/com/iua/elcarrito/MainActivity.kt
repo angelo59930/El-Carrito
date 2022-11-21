@@ -27,16 +27,6 @@ class MainActivity : AppCompatActivity() {
     setSupportActionBar(binding.appBarMain.toolbar)
 
 
-    /*TODO:Llevar al fragment que corresponda hacer la peticion, esto es una pruena */
-    thread {
-      val listProducts = ProductClient.service.listProduct()
-      val body = listProducts.execute().body()
-      Log.d("NETWORKING", "body == null? : ${body == null}")
-      if(body != null)
-        Log.d("NETWORKING", "body:\n $body")
-    }
-    /*------------------------------------------------------------------------------*/
-
     val drawerLayout: DrawerLayout = binding.drawerLayout
     val navView: NavigationView = binding.navView
     val navController = findNavController(R.id.nav_host_fragment_content_main)
