@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.iua.elcarrito.MyApplication.Companion.preferences
 import com.iua.elcarrito.R
 import com.iua.elcarrito.adapter.ProductsAdapter
 import com.iua.elcarrito.data.model.Product
@@ -45,9 +46,7 @@ class HomeFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
       activity?.runOnUiThread{
         binding.poductList.adapter = ProductsAdapter(productArray,this)
       }
-
     }
-
 
     return binding.root
   }
@@ -58,6 +57,12 @@ class HomeFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
   }
 
   override fun onItemClick(position: Int) {
+    Log.d("PROD-PREF", "Producto: $productArray[position]")
+
+    preferences.saveProductName(productArray[position].title)
+    preferences.saveProductDesc(productArray[position].description)
+    preferences.saveProductPrice(productArray[position].price.toString())
+
     findNavController().navigate(R.id.action_nav_home_to_detailProductFragment)
   }
 }

@@ -30,7 +30,7 @@ class ProfileFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    binding.textView2.text = preferences.getUsername()
+    //binding.textView2.text = preferences.getUsername()
 
     binding.editProfile.setOnClickListener {
       findNavController().navigate(R.id.action_nav_profile_to_editProfileFragment)

@@ -29,7 +29,7 @@ class LogActivity : AppCompatActivity() {
 
     binding.login.setOnClickListener {
       if (binding.editTextTextPersonName.text.toString().isNotEmpty()){
-        preferences.saveUsername(binding.editTextTextPersonName.text.toString())
+        //preferences.saveUsername(binding.editTextTextPersonName.text.toString())
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
       }

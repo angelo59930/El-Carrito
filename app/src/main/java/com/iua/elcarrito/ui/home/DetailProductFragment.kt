@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.iua.elcarrito.MyApplication.Companion.preferences
+import com.iua.elcarrito.data.model.Product
 import com.iua.elcarrito.databinding.FragmentDetailProductBinding
 
 class DetailProductFragment : Fragment() {
@@ -28,18 +30,17 @@ class DetailProductFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
+    val name = preferences.getProductName()
+    val desc = preferences.getProductDesc()
+    val price = preferences.getProductPrice()
+
+    binding.textView17.text = name
+
+    binding.textView18.text = "$desc\nPrecio :$price"
+
     binding.agregar.setOnClickListener {
 
-      // RECORDAR QUE SE NECESITA PARA GENERAR LA CORRUTINA UnU
-      /*lifecycleScope.launch{
-        UserApplication.myAppDatabase.productDAO().insertProduct(
-          ProductEntity(
-            title = "test",
-            description = "test description",
-            price = 132
-          )
-        )
-      }*/
+      //TODO:agregar producto a la base de datos
 
       Toast.makeText(context,"AGREGADO AL CARRITO",Toast.LENGTH_LONG).show()
     }
