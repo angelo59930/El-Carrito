@@ -17,8 +17,7 @@ class ShopFragment : Fragment() {
 
   private lateinit var binding: FragmentShopBinding
   private lateinit var productViewModel: ProductViewModel
-  //private lateinit var productList : List<ProductEntity>
-  var lista = emptyList<ProductEntity>()
+
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -39,11 +38,7 @@ class ShopFragment : Fragment() {
 
 
     //TODO:mostrar la lista de productos en la activity
-    productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
-    productViewModel.getAllProducts.observe(viewLifecycleOwner) { products ->
-      lista = products
-      Log.d("DATA-BASE", "ACA ESTA EL MENSAJE : $products")
-    }
+
 
     binding.compra.setOnClickListener {
       Log.d("BOTON","PRESIONE EL BOTON COMPRAR")

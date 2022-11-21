@@ -1,16 +1,18 @@
 package com.iua.elcarrito.ui.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.iua.elcarrito.MyApplication
 import com.iua.elcarrito.MyApplication.Companion.preferences
 import com.iua.elcarrito.data.databases.entity.ProductEntity
 import com.iua.elcarrito.databinding.FragmentDetailProductBinding
 import com.iua.elcarrito.viewModel.ProductViewModel
+
 
 class DetailProductFragment : Fragment() {
 
@@ -41,17 +43,18 @@ class DetailProductFragment : Fragment() {
 
     binding.textView18.text = "$sDesc\nPrecio :$sPrice"
 
+    productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
+
+    if (sPrice != null) {
+      productViewModel.addProduct(ProductEntity(title = sName.toString(), description = sDesc.toString(), price = sPrice.toDouble()))
+    }
+
     binding.agregar.setOnClickListener {
-
-      productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
-      if (sPrice != null) {
-        productViewModel.addProduct(ProductEntity(title = sName.toString(), description = sDesc.toString(), price = sPrice.toDouble()))
-      }
-
       Toast.makeText(context,"AGREGADO AL CARRITO",Toast.LENGTH_LONG).show()
     }
 
     binding.guardar.setOnClickListener {
+      //TODO:agregar un producto con el estado de guardado
       Toast.makeText(context,"AGREGADO A LOS DESTACADOS",Toast.LENGTH_LONG).show()
     }
 
