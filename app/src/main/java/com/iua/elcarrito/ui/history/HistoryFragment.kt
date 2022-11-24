@@ -59,7 +59,6 @@ class HistoryFragment : Fragment(), ProductsAdapter.ProductListOnClickListener  
       binding.poductList.adapter = ProductsAdapter(history,this)
     }
 
-    //FIXME:CORREGIR PORQUE NO SE PASA EL HISTORIAL
 
 
 

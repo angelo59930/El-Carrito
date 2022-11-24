@@ -56,6 +56,7 @@ class HomeFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
     _binding = null
   }
 
+  //TODO: agregar al resto de recyclerViews
   override fun onItemClick(position: Int) {
     Log.d("PROD-PREF", "Producto: $productArray[position]")
 
