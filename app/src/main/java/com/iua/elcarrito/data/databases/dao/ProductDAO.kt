@@ -15,13 +15,22 @@ interface ProductDAO {
   @Query("SELECT * FROM products_table")
   fun getAllProducts(): LiveData<List<ProductEntity>>
 
+  @Query("SELECT * FROM products_table WHERE state = 0")
+  fun getHistoryProducts(): LiveData<List<ProductEntity>>
+
+  @Query("SELECT * FROM products_table WHERE state = 1")
+  fun getSavedProducts(): LiveData<List<ProductEntity>>
+
+  @Query("SELECT * FROM products_table WHERE state = 2")
+  fun getCartProducts(): LiveData<List<ProductEntity>>
+
   @Insert(onConflict = OnConflictStrategy.IGNORE)
   suspend fun insertProduct(productEntity: ProductEntity)
 
   @Insert(onConflict = OnConflictStrategy.IGNORE)
   suspend fun insertProduct(productEntity: List<ProductEntity>)
 
-  @Update
+  @Update(onConflict = OnConflictStrategy.IGNORE)
   suspend fun updateProduct(productEntity: ProductEntity)
 
   @Delete

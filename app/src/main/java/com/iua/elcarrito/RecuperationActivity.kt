@@ -16,7 +16,16 @@ class RecuperationActivity : AppCompatActivity() {
     setContentView(view)
 
     binding.recuperationButton.setOnClickListener {
-      /* TODO:agregar intent de enviar mail*/
+      /*
+      * La logica de recuperacion de contrseña depende de un backend
+      * que no se encuentra implementado en este proyecto
+      * por lo que se muestra un mensaje de que se esta recuperando.
+      * Lo que deberia pasar es lo siguente:
+      * 1. El usuario toca el boton de recuperacion
+      * 2. Se envia la peticion al back para recuperar
+      * 3. Se muestra un mensaje de que se envio un mail (El back se encarga de la busqueda del usuario y envio del mail)
+      * 4. Se redirige al usuario a la pantalla de login
+      * */
 
       Toast.makeText(applicationContext, R.string.recuperation_text_validation,Toast.LENGTH_LONG ).show()
 

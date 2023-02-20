@@ -59,7 +59,7 @@ class HomeFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
   //TODO: agregar al resto de recyclerViews
   override fun onItemClick(position: Int) {
     Log.d("PROD-PREF", "Producto: $productArray[position]")
-
+    //todo: revisar
     preferences.saveProductName(productArray[position].title)
     preferences.saveProductDesc(productArray[position].description)
     preferences.saveProductPrice(productArray[position].price.toString())

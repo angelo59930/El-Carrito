@@ -1,5 +1,6 @@
 package com.iua.elcarrito.ui.shop
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -30,11 +31,23 @@ class OrderFragment : Fragment() {
     super.onViewCreated(view, savedInstanceState)
     binding.button.setOnClickListener {
       Toast.makeText(context,"Pedido Realizado",Toast.LENGTH_LONG).show()
-      findNavController().navigate(R.id.action_orderFragment_to_nav_home)
+      sendOrderMail()
     }
     binding.button2.setOnClickListener {
       findNavController().navigate(R.id.action_orderFragment_to_nav_home)
     }
+  }
+
+  private fun sendOrderMail() {
+    val email = "amanfredi986@alumnos.iua.edu.ar"
+    val subject = "Pedido de Compra"
+    val message = "El pedido posee: ${binding.textView11.text}"
+    val intent = Intent(Intent.ACTION_SEND)
+    intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
+    intent.putExtra(Intent.EXTRA_SUBJECT, subject)
+    intent.putExtra(Intent.EXTRA_TEXT, message)
+    intent.type = "message/rfc822"
+    startActivity(Intent.createChooser(intent, "Choose an email client"))
   }
 
 }

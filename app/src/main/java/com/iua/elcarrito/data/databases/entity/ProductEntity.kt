@@ -10,5 +10,7 @@ data class ProductEntity(
   var id: Long? = null,
   @ColumnInfo(name="title") val title: String,
   @ColumnInfo(name="description") val description: String,
-  @ColumnInfo(name="price") val price: Double
+  @ColumnInfo(name="price") val price: Double,
+  // 0 = historial, 1 = guardados, 2 = carrito
+  @ColumnInfo(name="state") val state: Int = 0
 )

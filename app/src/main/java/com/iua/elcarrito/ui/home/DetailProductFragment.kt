@@ -45,19 +45,32 @@ class DetailProductFragment : Fragment() {
 
     productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
 
-    if (sPrice != null) {
-      productViewModel.addProduct(ProductEntity(title = sName.toString(), description = sDesc.toString(), price = sPrice.toDouble()))
-    }
-
     binding.agregar.setOnClickListener {
+      if (sPrice != null) {
+        productViewModel.addProduct(ProductEntity(title = sName.toString(), description = sDesc.toString(), price = sPrice.toDouble(), state = 2))
+      }
       Toast.makeText(context,"AGREGADO AL CARRITO",Toast.LENGTH_LONG).show()
     }
 
     binding.guardar.setOnClickListener {
-      //TODO:agregar un producto con el estado de guardado
+      if (sPrice != null) {
+        productViewModel.addProduct(ProductEntity(title = sName.toString(), description = sDesc.toString(), price = sPrice.toDouble(), state = 1))
+      }
       Toast.makeText(context,"AGREGADO A LOS DESTACADOS",Toast.LENGTH_LONG).show()
     }
 
+  }
+
+  override fun onDestroyView() {
+    super.onDestroyView()
+
+    val sName = preferences.getProductName()
+    val sDesc = preferences.getProductDesc()
+    val sPrice = preferences.getProductPrice()
+
+    if (sPrice != null) {
+      productViewModel.addProduct(ProductEntity(title = sName.toString(), description = sDesc.toString(), price = sPrice.toDouble(), state = 0))
+    }
   }
 
 }
