@@ -69,5 +69,6 @@
     <string name="descriocion_del_producto">Descriocion del producto</string>
     <string name="agregar">agregar</string>
     <string name="destacar">destacar</string>
+    <string name="correo">Correo:</string>
 
 </resources>

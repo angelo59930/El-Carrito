@@ -9,11 +9,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.iua.elcarrito.R
+import com.iua.elcarrito.data.databases.entity.ProductEntity
+import com.iua.elcarrito.data.model.Product
 import com.iua.elcarrito.databinding.FragmentOrderBinding
+import com.iua.elcarrito.databinding.FragmentShopBinding
+import com.iua.elcarrito.viewModel.ProductViewModel
 
 class OrderFragment : Fragment() {
 
   private lateinit var binding: FragmentOrderBinding
+  private lateinit var productViewModel: ProductViewModel
+
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -24,6 +30,25 @@ class OrderFragment : Fragment() {
     savedInstanceState: Bundle?
   ): View? {
     binding = FragmentOrderBinding.inflate(inflater,container,false)
+
+    var lista = emptyList<ProductEntity>()
+    var total = 0.0
+    var productos = ""
+
+    productViewModel = ProductViewModel(requireActivity().application)
+
+    productViewModel.getCartProducts.observe(viewLifecycleOwner) { products ->
+      lista = products
+
+      lista.forEach { item ->
+        total += item.price
+        productos += item.title + " - $${item.price}  | "
+      }
+      binding.textView9.text = total.toString()
+      binding.textView11.text = productos
+    }
+    //TODO:Se puede cambiar por el correo del usuario
+    binding.textView7.text = "Amanfredi986@alumnos.iua.edu.ar"
     return binding.root
   }
 
@@ -41,7 +66,7 @@ class OrderFragment : Fragment() {
   private fun sendOrderMail() {
     val email = "amanfredi986@alumnos.iua.edu.ar"
     val subject = "Pedido de Compra"
-    val message = "El pedido posee: ${binding.textView11.text}"
+    val message = "El pedido posee: ${binding.textView11.text} \n Total: ${binding.textView9.text}"
     val intent = Intent(Intent.ACTION_SEND)
     intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
     intent.putExtra(Intent.EXTRA_SUBJECT, subject)

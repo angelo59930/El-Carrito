@@ -33,14 +33,14 @@ class SavedFragment : Fragment(), ProductsAdapter.ProductListOnClickListener  {
     productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
     productViewModel.getSavedProducts.observe(viewLifecycleOwner) { products ->
       lista = products
-      Log.d("CART", "CARRITO : $products")
+      Log.d("SAVED", "CARRITO : $products")
       lista.forEach { item ->
         val productTmp =
           Product(title = item.title, description = item.description, price = item.price)
         val tmp = saved + productTmp
-        Log.d("CART", "item actual: $productTmp")
-        Log.d("CART", "item actual: $productTmp")
-        Log.d("CART", "lista actual: $tmp")
+        Log.d("SAVED", "item actual: $productTmp")
+        Log.d("SAVED", "item actual: $productTmp")
+        Log.d("SAVED", "lista actual: $tmp")
         saved = tmp
       }
       binding.poductList.adapter = ProductsAdapter(saved, this)

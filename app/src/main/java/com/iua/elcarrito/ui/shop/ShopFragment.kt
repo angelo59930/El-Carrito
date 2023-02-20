@@ -29,11 +29,6 @@ class ShopFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    binding.compra.setOnClickListener {
-      Log.d("BOTON","PRESIONE EL BOTON COMPRAR")
-      findNavController().navigate(R.id.action_nav_shop_to_orderFragment)
-    }
-
     binding.volver.setOnClickListener {
       findNavController().navigate(R.id.action_nav_shop_to_nav_home)
     }
@@ -44,11 +39,13 @@ class ShopFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
     savedInstanceState: Bundle?
   ): View? {
     binding = FragmentShopBinding.inflate(inflater)
+    var total = 0.0
     productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
     productViewModel.getCartProducts.observe(viewLifecycleOwner) { products ->
       lista = products
       Log.d("CART", "CARRITO : $products")
       lista.forEach { item ->
+        total += item.price
         val productTmp =
           Product(title = item.title, description = item.description, price = item.price)
         val tmp = cart + productTmp
@@ -58,7 +55,20 @@ class ShopFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
         cart = tmp
       }
       binding.poductList.adapter = ProductsAdapter(cart, this)
+      binding.textView19.text = total.toString()
+
     }
+
+    binding.compra.setOnClickListener {
+      Log.d("BOTON","PRESIONE EL BOTON COMPRAR")
+      var bundle = Bundle()
+
+      bundle.putSerializable("cart", cart as ArrayList<Product>)
+      bundle.putDouble("total", total)
+      findNavController().navigate(R.id.action_nav_shop_to_orderFragment, bundle)
+    }
+
+
     return binding.root
   }
 
