@@ -24,7 +24,6 @@ class ShopFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,13 +44,10 @@ class ShopFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
     savedInstanceState: Bundle?
   ): View? {
     binding = FragmentShopBinding.inflate(inflater)
-
     productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
     productViewModel.getCartProducts.observe(viewLifecycleOwner) { products ->
       lista = products
-
       Log.d("CART", "CARRITO : $products")
-
       lista.forEach { item ->
         val productTmp =
           Product(title = item.title, description = item.description, price = item.price)
