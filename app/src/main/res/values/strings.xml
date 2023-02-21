@@ -70,5 +70,6 @@
     <string name="agregar">agregar</string>
     <string name="destacar">destacar</string>
     <string name="correo">Correo:</string>
+    <string name="imagen">imagen</string>
 
 </resources>

@@ -39,4 +39,12 @@ class ProductViewModel(application: Application) : AndroidViewModel(application)
     }
   }
 
+  fun deleteProduct(productEntity: ProductEntity){
+    viewModelScope.launch(Dispatchers.IO) {
+      repository.delProduct(productEntity)
+    }
+  }
+
+
+
 }

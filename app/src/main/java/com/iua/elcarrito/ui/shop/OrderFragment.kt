@@ -2,11 +2,13 @@ package com.iua.elcarrito.ui.shop
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
 import androidx.navigation.fragment.findNavController
 import com.iua.elcarrito.R
 import com.iua.elcarrito.data.databases.entity.ProductEntity
@@ -19,7 +21,7 @@ class OrderFragment : Fragment() {
 
   private lateinit var binding: FragmentOrderBinding
   private lateinit var productViewModel: ProductViewModel
-
+  private var lista = emptyList<ProductEntity>()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -30,8 +32,6 @@ class OrderFragment : Fragment() {
     savedInstanceState: Bundle?
   ): View? {
     binding = FragmentOrderBinding.inflate(inflater,container,false)
-
-    var lista = emptyList<ProductEntity>()
     var total = 0.0
     var productos = ""
 
@@ -54,10 +54,13 @@ class OrderFragment : Fragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
+    // Boton de enviar el pedido
     binding.button.setOnClickListener {
-      Toast.makeText(context,"Pedido Realizado",Toast.LENGTH_LONG).show()
       sendOrderMail()
+      clearCart()
+      Log.d("CART", "CARRITO : $lista")
     }
+    //Boton de volver al home
     binding.button2.setOnClickListener {
       findNavController().navigate(R.id.action_orderFragment_to_nav_home)
     }
@@ -73,6 +76,12 @@ class OrderFragment : Fragment() {
     intent.putExtra(Intent.EXTRA_TEXT, message)
     intent.type = "message/rfc822"
     startActivity(Intent.createChooser(intent, "Choose an email client"))
+  }
+
+  private fun clearCart() {
+    lista.forEach { item ->
+      productViewModel.deleteProduct(item)
+    }
   }
 
 }

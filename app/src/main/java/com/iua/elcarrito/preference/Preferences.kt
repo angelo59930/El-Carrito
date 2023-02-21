@@ -11,6 +11,8 @@ class Preferences(val context: Context) {
 
   //Prefence del usuario
   val SHARED_USER = "username"
+  val SHARED_MAIL = "mail"
+  val SHARED_LOCATION = "location"
 
   val storage = context.getSharedPreferences(SHARED_NAME, 0)
 
@@ -25,14 +27,30 @@ class Preferences(val context: Context) {
     storage.edit().putString(SHARED_PROD_PRIC, price).apply()
   }
 
-  // Save del producto
+  // Save del usuario
   fun saveUsername(username : String){
     storage.edit().putString(SHARED_USER,username ).apply()
   }
 
-  // Get del producto
+  fun saveMail(mail : String){
+    storage.edit().putString(SHARED_MAIL,mail ).apply()
+  }
+
+  fun saveLocation(location: String){
+    storage.edit().putString(SHARED_LOCATION,location).apply()
+  }
+
+  // Get del usuario
   fun getUsername(): String?{
    return storage.getString(SHARED_USER,"")
+  }
+
+  fun getMail(): String?{
+    return storage.getString(SHARED_MAIL,"")
+  }
+
+  fun getLocation():String?{
+    return storage.getString(SHARED_LOCATION,"")
   }
 
   // Get del producto
