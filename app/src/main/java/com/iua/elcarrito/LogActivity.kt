@@ -3,6 +3,9 @@ package com.iua.elcarrito
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.iua.elcarrito.MyApplication.Companion.preferences
 import com.iua.elcarrito.databinding.ActivityLogBinding
 
@@ -28,10 +31,23 @@ class LogActivity : AppCompatActivity() {
     }
 
     binding.login.setOnClickListener {
+      val pass1 = binding.editTextTextPassword.text
+      val email = binding.editTextTextPersonName.text
+
       if (binding.editTextTextPersonName.text.toString().isNotEmpty()){
-        preferences.saveUsername(binding.editTextTextPersonName.text.toString())
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email.toString(), pass1.toString())
+          .addOnCompleteListener(this) {
+            if (it.isSuccessful) {
+              Toast.makeText(this, "Bienvenido", Toast.LENGTH_LONG).show()
+              val intent = Intent(this, MainActivity::class.java)
+              startActivity(intent)
+            }
+            else {
+              Toast.makeText(this, "login Incorrecto", Toast.LENGTH_LONG).show()
+
+            }
+          }
+
       }
     }
   }
