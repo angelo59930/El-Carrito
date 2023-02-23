@@ -1,23 +1,18 @@
 package com.iua.elcarrito.ui.profile
 
-import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
-import android.graphics.Bitmap
-import android.net.Uri
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.MediaStore
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.navigation.fragment.findNavController
-import com.iua.elcarrito.MyApplication.Companion.preferences
-import com.iua.elcarrito.R
+import androidx.core.content.ContextCompat
+import androidx.core.content.PermissionChecker
+import androidx.core.content.PermissionChecker.checkSelfPermission
+import androidx.fragment.app.Fragment
 import com.iua.elcarrito.databinding.FragmentEditProfileBinding
+import java.util.jar.Manifest
 
 class EditProfileFragment : Fragment() {
 
@@ -36,8 +31,16 @@ class EditProfileFragment : Fragment() {
     super.onViewCreated(view, savedInstanceState)
 
     binding.profileImage.setOnClickListener {
-      val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-      intent.type = "image/*"
+      // Verificamos si tenemos los permisos para usar la camara
+      // Si no los tenemos, los pedimos
+      // Si los tenemos, abrimos la camara
+
+      if (checkSelfPermission(requireContext(), android.Manifest.permission.CAMERA) == PermissionChecker.PERMISSION_DENIED) {
+        requestPermissions(arrayOf(android.Manifest.permission.CAMERA), 100)
+      } else {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivity(intent)
+      }
 
     }
 

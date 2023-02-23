@@ -40,7 +40,7 @@ class LogActivity : AppCompatActivity() {
       val pass1 = binding.editTextTextPassword.text
       val email = binding.editTextTextPersonName.text
 
-      if (binding.editTextTextPersonName.text.toString().isNotEmpty()){
+      /*if (binding.editTextTextPersonName.text.toString().isNotEmpty()){
         UserViewModel(application).getAllUsers.observe(this ){
           for (user in it) {
             if (user.email == email.toString() && user.password == pass1.toString()) {
@@ -51,7 +51,7 @@ class LogActivity : AppCompatActivity() {
             }
           }
         }
-      }
+      }*/
 
       // Usamos firebase para e
       if (binding.editTextTextPersonName.text.toString().isNotEmpty()){
