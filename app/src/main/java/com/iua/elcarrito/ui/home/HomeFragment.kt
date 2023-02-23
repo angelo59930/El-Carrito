@@ -2,6 +2,7 @@ package com.iua.elcarrito.ui.home
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.hardware.biometrics.BiometricPrompt
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,7 @@ import com.iua.elcarrito.data.model.Product
 import com.iua.elcarrito.data.model.ProductClient
 import com.iua.elcarrito.data.model.ProductList
 import com.iua.elcarrito.databinding.FragmentHomeBinding
+import java.util.concurrent.Executor
 import kotlin.concurrent.thread
 
 class HomeFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
@@ -44,6 +46,8 @@ class HomeFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
       Toast.makeText(context, "No hay conexión a internet", Toast.LENGTH_SHORT).show()
       binding.noWifi.visibility = View.VISIBLE
     } else {
+      // cambiamos el numero de columnas
+      binding.poductList.offsetChildrenVertical(0)
       makeList()
     }
 
@@ -79,6 +83,7 @@ class HomeFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
     preferences.saveProductName(productArray[position].title)
     preferences.saveProductDesc(productArray[position].description)
     preferences.saveProductPrice(productArray[position].price.toString())
+    preferences.saveImageProduct(productArray[position].image)
 
     findNavController().navigate(R.id.action_nav_home_to_detailProductFragment)
   }

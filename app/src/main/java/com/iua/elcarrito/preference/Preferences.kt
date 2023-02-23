@@ -17,11 +17,11 @@ class Preferences(val context: Context) {
   val SHARED_IMAGE = "path"
   val SHARED_DIRECTION = "direccion"
 
-
+  // settings
+  val SHARED_COMLUMNS = "columns"
 
   val storage = context.getSharedPreferences(SHARED_NAME, 0)
 
-  // Save del producto
   fun saveProductName(name : String){
     storage.edit().putString(SHARED_PROD_NAME, name).apply()
   }
@@ -32,19 +32,14 @@ class Preferences(val context: Context) {
     storage.edit().putString(SHARED_PROD_PRIC, price).apply()
   }
 
-  // Save del usuario
   fun saveMail(mail : String){
     storage.edit().putString(SHARED_MAIL,mail ).apply()
   }
 
-  // Get del usuario
   fun getMail(): String?{
     return storage.getString(SHARED_MAIL,"")
   }
 
-
-
-  // Get del producto
   fun getProductName(): String? {
     return storage.getString(SHARED_PROD_NAME, "")
   }
@@ -79,6 +74,22 @@ class Preferences(val context: Context) {
 
   fun getImage():String ? {
     return storage.getString(SHARED_IMAGE,"")
+  }
+
+  fun saveColumns(toInt: Int) {
+    storage.edit().putInt(SHARED_COMLUMNS,toInt).apply()
+  }
+
+  fun geaColumns(): Int {
+    return storage.getInt(SHARED_COMLUMNS,2)
+  }
+
+  fun saveImageProduct(image: String) {
+    return storage.edit().putString("imageProduct",image).apply()
+  }
+
+  fun getImageProduct():String?{
+    return storage.getString("imageProduct","")
   }
 
 }

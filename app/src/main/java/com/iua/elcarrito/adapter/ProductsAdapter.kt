@@ -3,6 +3,7 @@ package com.iua.elcarrito.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.iua.elcarrito.data.model.Product
 import com.iua.elcarrito.databinding.ViewProductItemBinding
 
@@ -22,6 +23,7 @@ class ProductsAdapter(private val products:List<Product>, private val listener: 
   class ViewHolder(private val binding : ViewProductItemBinding, listener: ProductListOnClickListener):RecyclerView.ViewHolder(binding.root){
     fun bind(product: Product){
       binding.titleProduct.text = product.title
+      Glide.with(binding.root.context).load(product.image).into(binding.imageView3)
     }
     init {
       itemView.setOnClickListener{

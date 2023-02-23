@@ -36,7 +36,7 @@ class SavedFragment : Fragment(), ProductsAdapter.ProductListOnClickListener  {
       Log.d("SAVED", "CARRITO : $products")
       lista.forEach { item ->
         val productTmp =
-          Product(title = item.title, description = item.description, price = item.price)
+          Product(title = item.title, description = item.description, price = item.price, image=item.image)
         val tmp = saved + productTmp
         Log.d("SAVED", "item actual: $productTmp")
         Log.d("SAVED", "item actual: $productTmp")

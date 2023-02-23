@@ -12,5 +12,6 @@ data class ProductEntity(
   @ColumnInfo(name="description") val description: String,
   @ColumnInfo(name="price") val price: Double,
   // 0 = historial, 1 = guardados, 2 = carrito
-  @ColumnInfo(name="state") val state: Int = 0
+  @ColumnInfo(name="state") val state: Int = 0,
+  @ColumnInfo(name="image") val image: String
 )

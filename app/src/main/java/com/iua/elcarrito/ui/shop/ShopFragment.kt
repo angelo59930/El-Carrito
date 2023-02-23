@@ -47,7 +47,7 @@ class ShopFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
       lista.forEach { item ->
         total += item.price
         val productTmp =
-          Product(title = item.title, description = item.description, price = item.price)
+          Product(title = item.title, description = item.description, price = item.price,image=item.image)
         val tmp = cart + productTmp
         Log.d("CART", "item actual: $productTmp")
         Log.d("CART", "item actual: $productTmp")

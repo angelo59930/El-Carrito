@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface ProductService {
 
-  @GET(/* value = */ "v1/002227b3-2afe-4399-a8ab-b9853a756eb4")
+  @GET(/* value = */ "v1/b28501e5-a662-4ebe-8bc8-4f4e4697f309")
   fun listProduct () : Call<ProductList>
 }

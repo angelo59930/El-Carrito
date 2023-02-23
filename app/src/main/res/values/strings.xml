@@ -73,5 +73,8 @@
     <string name="imagen">imagen</string>
     <string name="contrase_a">contraseña:</string>
     <string name="imagen_de_no_coneccion">Imagen de no coneccion</string>
+    <string name="cantidad_de_columnas">Cantidad de columnas</string>
+    <string name="columnas_base">2</string>
+    <string name="aun_no_hay_direccion_guardada">Aun no hay direccion guardada</string>
 
 </resources>

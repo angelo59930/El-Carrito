@@ -43,7 +43,7 @@ class HistoryFragment : Fragment(), ProductsAdapter.ProductListOnClickListener  
       Log.d("HISTORY", "HISTORIAL : $products")
 
       lista.forEach { item ->
-        val productTmp = Product(title = item.title, description = item.description, price = item.price)
+        val productTmp = Product(title = item.title, description = item.description, price = item.price, image = item.image)
         val tmp = history + productTmp
         Log.d("HISTORY","item actual: $productTmp")
         Log.d("HISTORY","item actual: $productTmp")

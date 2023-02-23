@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.iua.elcarrito.MyApplication
 import com.iua.elcarrito.MyApplication.Companion.preferences
 import com.iua.elcarrito.data.databases.entity.ProductEntity
@@ -38,8 +39,12 @@ class DetailProductFragment : Fragment() {
     val sName = preferences.getProductName()
     val sDesc = preferences.getProductDesc()
     val sPrice = preferences.getProductPrice()
+    val sImage = preferences.getImageProduct()
 
     binding.textView17.text = sName
+
+    Glide.with(binding.root.context).load(sImage).into(binding.imageView6)
+
 
     binding.textView18.text = "$sDesc\nPrecio :$sPrice"
 
@@ -47,14 +52,14 @@ class DetailProductFragment : Fragment() {
 
     binding.agregar.setOnClickListener {
       if (sPrice != null) {
-        productViewModel.addProduct(ProductEntity(title = sName.toString(), description = sDesc.toString(), price = sPrice.toDouble(), state = 2))
+        productViewModel.addProduct(ProductEntity(title = sName.toString(), description = sDesc.toString(), price = sPrice.toDouble(), state = 2, image = sImage.toString()))
       }
       Toast.makeText(context,"AGREGADO AL CARRITO",Toast.LENGTH_LONG).show()
     }
 
     binding.guardar.setOnClickListener {
       if (sPrice != null) {
-        productViewModel.addProduct(ProductEntity(title = sName.toString(), description = sDesc.toString(), price = sPrice.toDouble(), state = 1))
+        productViewModel.addProduct(ProductEntity(title = sName.toString(), description = sDesc.toString(), price = sPrice.toDouble(), state = 1, image=sImage.toString()))
       }
       Toast.makeText(context,"AGREGADO A LOS DESTACADOS",Toast.LENGTH_LONG).show()
     }
@@ -67,9 +72,10 @@ class DetailProductFragment : Fragment() {
     val sName = preferences.getProductName()
     val sDesc = preferences.getProductDesc()
     val sPrice = preferences.getProductPrice()
+    val sImage = preferences.getImageProduct()
 
     if (sPrice != null) {
-      productViewModel.addProduct(ProductEntity(title = sName.toString(), description = sDesc.toString(), price = sPrice.toDouble(), state = 0))
+      productViewModel.addProduct(ProductEntity(title = sName.toString(), description = sDesc.toString(), price = sPrice.toDouble(), state = 0, image = sImage.toString()))
     }
   }
 
