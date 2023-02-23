@@ -1,6 +1,8 @@
 package com.iua.elcarrito.preference
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.media.Image
 
 class Preferences(val context: Context) {
   // Preference del producto
@@ -10,9 +12,10 @@ class Preferences(val context: Context) {
   val SHARED_PROD_PRIC = "prodPric"
 
   //Prefence del usuario
-  val SHARED_USER = "username"
+
   val SHARED_MAIL = "mail"
-  val SHARED_LOCATION = "location"
+
+
 
   val storage = context.getSharedPreferences(SHARED_NAME, 0)
 
@@ -28,30 +31,16 @@ class Preferences(val context: Context) {
   }
 
   // Save del usuario
-  fun saveUsername(username : String){
-    storage.edit().putString(SHARED_USER,username ).apply()
-  }
-
   fun saveMail(mail : String){
     storage.edit().putString(SHARED_MAIL,mail ).apply()
   }
 
-  fun saveLocation(location: String){
-    storage.edit().putString(SHARED_LOCATION,location).apply()
-  }
-
   // Get del usuario
-  fun getUsername(): String?{
-   return storage.getString(SHARED_USER,"")
-  }
-
   fun getMail(): String?{
     return storage.getString(SHARED_MAIL,"")
   }
 
-  fun getLocation():String?{
-    return storage.getString(SHARED_LOCATION,"")
-  }
+
 
   // Get del producto
   fun getProductName(): String? {
@@ -64,6 +53,14 @@ class Preferences(val context: Context) {
 
   fun getProductPrice(): String? {
     return storage.getString(SHARED_PROD_PRIC, "")
+  }
+
+  fun setIsLogged(login: Boolean) {
+    storage.edit().putBoolean("isLogged", login).apply()
+  }
+
+  fun getIsLogged(): Boolean {
+    return storage.getBoolean("isLogged",false)
   }
 
 }

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.iua.elcarrito.databinding.ActivityRecuperationBinding
 
 class RecuperationActivity : AppCompatActivity() {
@@ -16,21 +17,23 @@ class RecuperationActivity : AppCompatActivity() {
     setContentView(view)
 
     binding.recuperationButton.setOnClickListener {
-      /*
-      * La logica de recuperacion de contrseña depende de un backend
-      * que no se encuentra implementado en este proyecto
-      * por lo que se muestra un mensaje de que se esta recuperando.
-      * Lo que deberia pasar es lo siguente:
-      * 1. El usuario toca el boton de recuperacion
-      * 2. Se envia la peticion al back para recuperar
-      * 3. Se muestra un mensaje de que se envio un mail (El back se encarga de la busqueda del usuario y envio del mail)
-      * 4. Se redirige al usuario a la pantalla de login
-      * */
 
-      Toast.makeText(applicationContext, R.string.recuperation_text_validation,Toast.LENGTH_LONG ).show()
+      if(binding.emailtext.text.toString().isEmpty()){
+        Toast.makeText(this, "El campo no puede estar vacio", Toast.LENGTH_LONG).show()
+        return@setOnClickListener
+      }
 
-      val intent: Intent = Intent(this, LogActivity::class.java)
-      startActivity(intent)
+      FirebaseAuth.getInstance().sendPasswordResetEmail(binding.emailtext.text.toString())
+        .addOnCompleteListener(this) {
+          if (it.isSuccessful) {
+            Toast.makeText(this, "Se envio un mail para recuperar la contraseña", Toast.LENGTH_LONG).show()
+            val intent = Intent(this, LogActivity::class.java)
+            startActivity(intent)
+          }
+          else {
+            Toast.makeText(this, "No se encontro el usuario", Toast.LENGTH_LONG).show()
+          }
+        }
     }
 
     binding.recuperationButtonBack.setOnClickListener {

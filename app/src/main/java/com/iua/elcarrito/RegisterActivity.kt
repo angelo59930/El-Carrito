@@ -4,10 +4,12 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.iua.elcarrito.data.databases.entity.UserEntity
+import com.iua.elcarrito.data.model.User
 import com.iua.elcarrito.databinding.ActivityRegisterBinding
+import com.iua.elcarrito.viewModel.UserViewModel
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -23,10 +25,12 @@ class RegisterActivity : AppCompatActivity() {
       val pass1 = binding.editTextTextPassword2.text
       val pass2 = binding.editTextTextPassword3.text
       val email = binding.editTextTextEmailAddress.text
-      //TODO: Validar que la contraseña tenga mas de 6 caracteres
 
       if ( binding.editTextTextEmailAddress.text.isNotEmpty()){
-        if (pass1.toString() == pass2.toString() && binding.editTextTextPassword2.text.isNotEmpty()){
+        if (pass1.length > 6 && pass1.toString() == pass2.toString() && binding.editTextTextPassword2.text.isNotEmpty()){
+
+          //UserViewModel(application).addUser(UserEntity(0, email.toString(), pass1.toString()))
+
           FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.toString(), pass1.toString())
             .addOnCompleteListener(this) {
             if (it.isSuccessful) {
@@ -40,7 +44,7 @@ class RegisterActivity : AppCompatActivity() {
           }
         }
         else {
-          showAlert("Las contraseñas no coinciden")
+          showAlert("Error en las contraseñas")
         }
       }
       else {
