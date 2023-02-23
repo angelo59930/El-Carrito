@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.ViewModelProvider
@@ -32,6 +33,12 @@ class ShopFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
+
+    binding.limpiar.setOnClickListener {
+      clearCart()
+      Toast.makeText(context, "Carrito vacio", Toast.LENGTH_SHORT).show()
+      findNavController().navigate(R.id.action_nav_shop_to_nav_home)
+    }
 
     binding.volver.setOnClickListener {
       findNavController().navigate(R.id.action_nav_shop_to_nav_home)
@@ -78,6 +85,12 @@ class ShopFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
 
   override fun onItemClick(position: Int) {
     findNavController().navigate(R.id.action_nav_shop_to_detailProductFragment)
+  }
+
+  private fun clearCart() {
+    lista.forEach { item ->
+      productViewModel.deleteProduct(item)
+    }
   }
 
 }

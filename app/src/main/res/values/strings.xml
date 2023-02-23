@@ -76,5 +76,6 @@
     <string name="cantidad_de_columnas">Cantidad de columnas</string>
     <string name="columnas_base">2</string>
     <string name="aun_no_hay_direccion_guardada">Aun no hay direccion guardada</string>
+    <string name="vaciar">Vaciar</string>
 
 </resources>
