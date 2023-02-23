@@ -14,6 +14,8 @@ class Preferences(val context: Context) {
   //Prefence del usuario
 
   val SHARED_MAIL = "mail"
+  val SHARED_IMAGE = "path"
+  val SHARED_DIRECTION = "direccion"
 
 
 
@@ -61,6 +63,22 @@ class Preferences(val context: Context) {
 
   fun getIsLogged(): Boolean {
     return storage.getBoolean("isLogged",false)
+  }
+
+  fun saveDireccion(direccion: String) {
+    storage.edit().putString(SHARED_DIRECTION,direccion).apply()
+  }
+
+  fun getDireccion(): String? {
+    return storage.getString(SHARED_DIRECTION,"")
+  }
+
+  fun saveImage(path: String?) {
+    storage.edit().putString(SHARED_IMAGE,path).apply()
+  }
+
+  fun getImage():String ? {
+    return storage.getString(SHARED_IMAGE,"")
   }
 
 }

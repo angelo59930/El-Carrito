@@ -12,12 +12,14 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.iua.elcarrito.data.model.ProductClient
 import com.iua.elcarrito.databinding.ActivityMainBinding
+import com.iua.elcarrito.databinding.NavHeaderMainBinding
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
   private lateinit var appBarConfiguration: AppBarConfiguration
   private lateinit var binding: ActivityMainBinding
+  private lateinit var navHeaderMainBinding: NavHeaderMainBinding
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -26,12 +28,22 @@ class MainActivity : AppCompatActivity() {
 
     setSupportActionBar(binding.appBarMain.toolbar)
 
+    /*TODO: REVISAR ESTO
+    navHeaderMainBinding = NavHeaderMainBinding.inflate(layoutInflater)
+
+    Log.d("nav", navHeaderMainBinding.usuario.text.toString())
+
+    navHeaderMainBinding.usuario.setText(MyApplication.preferences.getMail())
+
+    Log.d("nav", navHeaderMainBinding.usuario.text.toString())*/
+
 
     val drawerLayout: DrawerLayout = binding.drawerLayout
     val navView: NavigationView = binding.navView
     val navController = findNavController(R.id.nav_host_fragment_content_main)
     // Passing each menu ID as a set of Ids because each
     // menu should be considered as top level destinations.
+
     appBarConfiguration = AppBarConfiguration(
       setOf(
         R.id.nav_home, R.id.nav_saved, R.id.nav_setting, R.id.nav_shop, R.id.nav_history,R.id.nav_profile

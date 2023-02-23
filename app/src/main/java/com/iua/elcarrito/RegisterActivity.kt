@@ -6,10 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.iua.elcarrito.data.databases.entity.UserEntity
-import com.iua.elcarrito.data.model.User
 import com.iua.elcarrito.databinding.ActivityRegisterBinding
-import com.iua.elcarrito.viewModel.UserViewModel
 
 class RegisterActivity : AppCompatActivity() {
 

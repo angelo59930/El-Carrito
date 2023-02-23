@@ -35,6 +35,8 @@ class ProfileFragment : Fragment() {
 
     binding.CorreoUsuario.text = preferences.getMail()
 
+    binding.imageProfile.setImageURI(Uri.parse(preferences.getImage()))
+
     binding.editProfile.setOnClickListener {
       findNavController().navigate(R.id.action_nav_profile_to_editProfileFragment)
     }
