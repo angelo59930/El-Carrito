@@ -1,10 +1,14 @@
 package com.iua.elcarrito.ui.home
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.iua.elcarrito.MyApplication.Companion.preferences
@@ -31,24 +35,36 @@ class HomeFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
 
     _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-    productArray = arrayListOf()
+    binding.noWifi.visibility = View.INVISIBLE
 
+    productArray = arrayListOf()
+    val con = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+    if (con.activeNetworkInfo == null) {
+      Toast.makeText(context, "No hay conexión a internet", Toast.LENGTH_SHORT).show()
+      binding.noWifi.visibility = View.VISIBLE
+    } else {
+      makeList()
+    }
+
+    return binding.root
+  }
+
+  private fun makeList() {
     thread {
       val listProducts = ProductClient.service.listProduct()
       val body = listProducts.execute().body()
 
       Log.d("NETWORKING", "body == null? : ${body == null}")
-      if(body != null) {
+      if (body != null) {
         productArray = body
         Log.d("NETWORKING", "body:\n $productArray")
       }
 
-      activity?.runOnUiThread{
-        binding.poductList.adapter = ProductsAdapter(productArray,this)
+      activity?.runOnUiThread {
+        binding.poductList.adapter = ProductsAdapter(productArray, this)
       }
     }
-
-    return binding.root
   }
 
   override fun onDestroyView() {

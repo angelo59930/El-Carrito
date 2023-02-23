@@ -72,5 +72,6 @@
     <string name="correo">Correo:</string>
     <string name="imagen">imagen</string>
     <string name="contrase_a">contraseña:</string>
+    <string name="imagen_de_no_coneccion">Imagen de no coneccion</string>
 
 </resources>

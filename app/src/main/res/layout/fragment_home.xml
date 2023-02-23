@@ -21,4 +21,17 @@
         app:spanCount="2"
         tools:listitem="@layout/view_product_item" />
 
+    <ImageView
+        android:id="@+id/noWifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="70dp"
+        android:minHeight="70dp"
+        android:src="@drawable/ic_no_wifi"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/imagen_de_no_coneccion" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
