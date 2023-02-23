@@ -64,6 +64,10 @@ class DetailProductFragment : Fragment() {
       Toast.makeText(context,"AGREGADO A LOS DESTACADOS",Toast.LENGTH_LONG).show()
     }
 
+    if (sPrice != null) {
+      productViewModel.addProduct(ProductEntity(title = sName.toString(), description = sDesc.toString(), price = sPrice.toDouble(), state = 0, image = sImage.toString()))
+    }
+
   }
 
   override fun onDestroyView() {
