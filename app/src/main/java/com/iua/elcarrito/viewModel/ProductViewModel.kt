@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.iua.elcarrito.data.databases.ProductDataBase
+import com.iua.elcarrito.data.databases.AccessDataBase
 import com.iua.elcarrito.data.databases.entity.ProductEntity
 import com.iua.elcarrito.data.databases.repository.ProductRepository
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +19,7 @@ class ProductViewModel(application: Application) : AndroidViewModel(application)
   private val repository: ProductRepository
 
   init {
-    val productDAO = ProductDataBase.getInstance(application).productDAO()
+    val productDAO = AccessDataBase.getInstance(application).productDAO()
     repository = ProductRepository(productDAO)
     getHistoryProducts = repository.getHistory
     getSavedProducts = repository.getSaved

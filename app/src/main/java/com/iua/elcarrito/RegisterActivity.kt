@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.iua.elcarrito.data.databases.entity.UserEntity
 import com.iua.elcarrito.databinding.ActivityRegisterBinding
+import com.iua.elcarrito.viewModel.UserViewModel
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -26,7 +28,7 @@ class RegisterActivity : AppCompatActivity() {
       if ( binding.editTextTextEmailAddress.text.isNotEmpty()){
         if (pass1.length > 6 && pass1.toString() == pass2.toString() && binding.editTextTextPassword2.text.isNotEmpty()){
 
-          //UserViewModel(application).addUser(UserEntity(0, email.toString(), pass1.toString()))
+          UserViewModel(application).addUser(UserEntity(null,email.toString(), pass1.toString(),location = ""))
 
           FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.toString(), pass1.toString())
             .addOnCompleteListener(this) {

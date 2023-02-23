@@ -25,9 +25,5 @@
             android:id="@+id/nav_profile"
             android:icon="@drawable/icon_profile"
             android:title="@string/perfil" />
-        <item
-            android:id="@+id/nav_setting"
-            android:icon="@drawable/icon_setting"
-            android:title="@string/configuraci_n" />
     </group>
 </menu>

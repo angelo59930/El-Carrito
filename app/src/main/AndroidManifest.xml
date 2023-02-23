@@ -20,6 +20,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!--**********-->
+    <!-- Permisos para usar el patron del telefono -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <!--**********-->
 
     <application
         android:allowBackup="true"
