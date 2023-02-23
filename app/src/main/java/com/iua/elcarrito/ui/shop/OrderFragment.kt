@@ -1,5 +1,7 @@
 package com.iua.elcarrito.ui.shop
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.fragment.findNavController
 import com.iua.elcarrito.R
 import com.iua.elcarrito.data.databases.entity.ProductEntity
@@ -54,6 +58,8 @@ class OrderFragment : Fragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
+    notificationChannel()
+
     // Boton de enviar el pedido
     binding.button.setOnClickListener {
       sendOrderMail()
@@ -76,12 +82,38 @@ class OrderFragment : Fragment() {
     intent.putExtra(Intent.EXTRA_TEXT, message)
     intent.type = "message/rfc822"
     startActivity(Intent.createChooser(intent, "Choose an email client"))
+    notification()
   }
 
   private fun clearCart() {
     lista.forEach { item ->
       productViewModel.deleteProduct(item)
     }
+  }
+
+  private fun notification(){
+    val builder = NotificationCompat.Builder(requireContext(), "1")
+      .setSmallIcon(R.drawable.ic_launcher_foreground)
+      .setContentTitle("Tu carrito")
+      .setContentText("Su compra fue efectuada esta siendo efectuada :)")
+      .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+    with(NotificationManagerCompat.from(requireContext())) {
+      notify(1, builder.build())
+    }
+  }
+
+  private fun notificationChannel(){
+    val name = "El carrito"
+    val descriptionText = "El carrito"
+    val importance = NotificationManagerCompat.IMPORTANCE_DEFAULT
+
+    val channel = NotificationChannel("1", name, NotificationManager.IMPORTANCE_DEFAULT).apply {
+      description = descriptionText
+    }
+    val notificationManager: NotificationManager =
+      requireContext().getSystemService(NotificationManager::class.java)
+    notificationManager.createNotificationChannel(channel)
   }
 
 }

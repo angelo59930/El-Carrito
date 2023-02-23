@@ -1,11 +1,15 @@
 package com.iua.elcarrito.ui.shop
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.iua.elcarrito.R
@@ -39,6 +43,7 @@ class ShopFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
     savedInstanceState: Bundle?
   ): View? {
     binding = FragmentShopBinding.inflate(inflater)
+
     var total = 0.0
     productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
     productViewModel.getCartProducts.observe(viewLifecycleOwner) { products ->
@@ -62,7 +67,6 @@ class ShopFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
     binding.compra.setOnClickListener {
       Log.d("BOTON","PRESIONE EL BOTON COMPRAR")
       var bundle = Bundle()
-
       bundle.putSerializable("cart", cart as ArrayList<Product>)
       bundle.putDouble("total", total)
       findNavController().navigate(R.id.action_nav_shop_to_orderFragment, bundle)
