@@ -28,16 +28,6 @@ class MainActivity : AppCompatActivity() {
 
     setSupportActionBar(binding.appBarMain.toolbar)
 
-    /*TODO: REVISAR ESTO
-    navHeaderMainBinding = NavHeaderMainBinding.inflate(layoutInflater)
-
-    Log.d("nav", navHeaderMainBinding.usuario.text.toString())
-
-    navHeaderMainBinding.usuario.setText(MyApplication.preferences.getMail())
-
-    Log.d("nav", navHeaderMainBinding.usuario.text.toString())*/
-
-
     val drawerLayout: DrawerLayout = binding.drawerLayout
     val navView: NavigationView = binding.navView
     val navController = findNavController(R.id.nav_host_fragment_content_main)
