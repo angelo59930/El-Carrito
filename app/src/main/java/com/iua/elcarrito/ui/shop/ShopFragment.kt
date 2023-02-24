@@ -73,7 +73,7 @@ class ShopFragment : Fragment(), ProductsAdapter.ProductListOnClickListener {
 
     binding.compra.setOnClickListener {
       Log.d("BOTON","PRESIONE EL BOTON COMPRAR")
-      var bundle = Bundle()
+      val bundle = Bundle()
       bundle.putSerializable("cart", cart as ArrayList<Product>)
       bundle.putDouble("total", total)
       findNavController().navigate(R.id.action_nav_shop_to_orderFragment, bundle)

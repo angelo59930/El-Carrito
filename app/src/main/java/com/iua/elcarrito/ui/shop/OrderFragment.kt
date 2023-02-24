@@ -9,8 +9,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.fragment.findNavController
@@ -18,7 +16,6 @@ import com.iua.elcarrito.R
 import com.iua.elcarrito.data.databases.entity.ProductEntity
 import com.iua.elcarrito.data.model.Product
 import com.iua.elcarrito.databinding.FragmentOrderBinding
-import com.iua.elcarrito.databinding.FragmentShopBinding
 import com.iua.elcarrito.viewModel.ProductViewModel
 
 class OrderFragment : Fragment() {
@@ -51,7 +48,7 @@ class OrderFragment : Fragment() {
       binding.textView9.text = total.toString()
       binding.textView11.text = productos
     }
-    //TODO:Se puede cambiar por el correo del usuario
+    //Es el correo del responsable de la tienda
     binding.textView7.text = "Amanfredi986@alumnos.iua.edu.ar"
     return binding.root
   }
@@ -59,6 +56,21 @@ class OrderFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     notificationChannel()
+
+    /*
+    var total = 0.0
+    var cart = emptyList<Product>()
+
+    //tomamos el bundle
+    Log.d("BUNDLE-APP", "bundle: $savedInstanceState")
+    if (savedInstanceState != null) {
+      //cart = bundle.getSerializable("cart") as ArrayList<Product>
+      total = savedInstanceState.getDouble("total")
+      //Log.d("bundle", "bundle: $cart")
+      Log.d("BUNDLE-APP", "bundle: $total")
+    }*/
+
+
 
     // Boton de enviar el pedido
     binding.button.setOnClickListener {
